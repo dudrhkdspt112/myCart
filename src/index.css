@@ -8,6 +8,9 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+    word-break: keep-all;
+     /*한글은 한자씩 떨어지나 워드브레이크를 킵올을 사용하면 다 붙는다
+     영어는 한단어씩 떨어진다.  */
 }
 body {
 	font-size: 16px;

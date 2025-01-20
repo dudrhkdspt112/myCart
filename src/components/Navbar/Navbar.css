@@ -50,3 +50,19 @@
 	width: 25px;
 	margin-left: 5px;
 }
+
+/* 장바구니 */
+.cart_counts {
+	justify-content: center;
+    align-items: center;
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	background-color: #6457f9;
+	color: #fff;
+	font-size: 15px;
+	margin-left: 5px;
+}
+.cart_counts span {
+    margin-top: 2px;
+}
