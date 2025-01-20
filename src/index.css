@@ -14,3 +14,7 @@ body {
 	background-color: #f6f8fa;
     font-family: 'GmarketSansMedium', sans-serif;
 }
+.align_center {
+	display: flex;
+	align-items: center;
+}
