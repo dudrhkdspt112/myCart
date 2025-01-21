@@ -23,7 +23,10 @@ const LoginPage = () => {
 		formState: { errors },
 	  } = useForm();
 	
-	const submitData = (formData) => {console.log(formData); reset(); };
+	const submitData = (formData) => {
+		console.log(formData); 
+		reset(); 
+	};
     return (
         <section className='align_center form_page'>
 			<form onSubmit={handleSubmit(submitData)} className='authentication_form'>
