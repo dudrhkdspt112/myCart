@@ -4,12 +4,12 @@ import ProductsSidebar from './ProductsSidebar';
 import ProductsList from './ProductsList';
 
 const ProductsPage = () => {
-  return (
-    <section className='products_page'>
-		<ProductsSidebar/>
-		<ProductsList></ProductsList>
-	</section>
-  )
+    return (
+        <section className='products_page'>
+            <ProductsSidebar/>
+            <ProductsList></ProductsList>
+        </section>
+    )
 }
 
 export default ProductsPage
