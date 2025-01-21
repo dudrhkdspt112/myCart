@@ -50,6 +50,10 @@
 	width: 25px;
 	margin-left: 5px;
 }
+.navbar_links > a.active {
+	font-weight: 600;
+    transition: font-weight .2s ease-in-out;
+}
 
 /* 장바구니 */
 .cart_counts {
