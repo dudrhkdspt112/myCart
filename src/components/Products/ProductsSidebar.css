@@ -2,9 +2,18 @@
     padding: 10px 20px;
     border-radius: 5px;
     background-color: #fff;
+   
 }
 
 .products_sidebar h2 {
     font-size: 26px;
     margin-bottom: 10px;
+}
+
+.category_links {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    line-height: 2.5em;
 }

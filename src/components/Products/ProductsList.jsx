@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import './ProductsList.css';
 import ProductCard from './ProductCard';
-import apiClient from '../../utils/api-client';
+import useData from '../../Hook/useData';
+
 
 const ProductsList = () => {
 	
-	const [products, setProducts] = useState([]);
-	const [error, setError] = useState('');
+	const { data, error } =  useData('products');
 
-	useEffect(() => {
-		apiClient
-			.get('/products')
-			.then((res) => setProducts(res.data.products))
-			.catch((err) => setError(err))
-	}, [])
+	// const [products, setProducts] = useState([]);
+	// const [error, setError] = useState('');
+
+	// useEffect(() => {
+	// 	apiClient
+	// 		.get('/products')
+	// 		.then((res) => setProducts(res.data.products))
+	// 		.catch((err) => setError(err))
+	// }, [])
 
 	return (
 		<section className='products_list_section'>
@@ -29,19 +32,20 @@ const ProductsList = () => {
 			</header>
 
 			<div className='products_list'>
-				{error &&<em className='form_error'>{error}</em>}
-				{products.map((p)=> (
-					<ProductCard
-						key={p._id}
-						id={p._id}
-						image={p.images[0]}
-						price={p.price}
-						rating={p.reviews.rating}
-						ratingCounts={p.reviews.counts}
-						stock={p.stock}
-				/>
-				))}
-				
+				{error && <em className='form_error'>{error}</em>}
+				{data.products &&
+					data.products.map((product) => (
+						<ProductCard
+							key={product._id}
+							id={product._id}
+							image={product.images[0]}
+							price={product.price}
+							title={product.title}
+							rating={product.rating}
+							ratingCounts={product.reviews.counts}
+							stock={product.stock}
+						/>
+					))}
 			</div>
 		</section>
 	)

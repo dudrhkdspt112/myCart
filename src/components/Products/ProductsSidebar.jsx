@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from 'react'
+
 import './ProductsSidebar.css';
 import LinkWithIcon from '../Navbar/LinkWithIcon';
-import rocket from '../../assets/rocket.png';
-import apiClient from '../../utils/api-client';
+import useData from '../../Hook/useData';
 
 const ProductsSidebar = () => {
-	
-	const[categories, setCategories] = useState([]);
-	const[error, setError] = useState('');
-	
-	useEffect(() => {
-		apiClient
-			.get('category')
-			.then((res) => setCategories(res.data))
-			.catch((err) => setError(err.meessage))
-	}, []);
+	// :<< 이표시는 이름을 바꿀때 사용을 한다.
+	const {data: categories, error} = useData('category')
 
 	return (
 		<aside className='products_sidebar'>
