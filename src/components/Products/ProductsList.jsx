@@ -3,21 +3,23 @@ import './ProductsList.css';
 import ProductCard from './ProductCard';
 import useData from '../../Hook/useData';
 import ProductCardSkeleton from './ProductCardSkeleton';
+import { useSearchParams } from 'react-router-dom';
 
 
 const ProductsList = () => {
 	
-	const { data, error, isLoading } =  useData('products');
+	const [search, setSearch] = useSearchParams(); //요청주소 뒤에 쿼리스트링을 가져온다(?)이거 뒤에 부분
+	const category = search.get('category'); //category=값을 가져온다.
+	const { data, error, isLoading } = useData(
+		'/products',
+		{
+			params: {
+				category, //category: category와 같다.
+			},
+		},
+		[category]
+	); 
 	const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
-	// const [products, setProducts] = useState([]);
-	// const [error, setError] = useState('');
-
-	// useEffect(() => {
-	// 	apiClient
-	// 		.get('/products')
-	// 		.then((res) => setProducts(res.data.products))
-	// 		.catch((err) => setError(err))
-	// }, [])
 
 	return (
 		<section className='products_list_section'>
