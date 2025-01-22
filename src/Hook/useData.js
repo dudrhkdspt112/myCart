@@ -6,6 +6,7 @@ const useData = (url) => {
    
     const[data, setData] = useState([]);
     const[error, setError] = useState('');
+    
         
     useEffect(() => {
         apiClient
