@@ -3,7 +3,10 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Routing from './components/Routing/Routing'
 import { jwtDecode } from 'jwt-decode'
-import { use } from 'react'
+import setAuthToken from './utils/setAuthToken'
+
+//만약에 토큰이 있으면 axios 설절에 추가됨
+setAuthToken(localStorage.getItem('token'));
 
 function App() {
  
