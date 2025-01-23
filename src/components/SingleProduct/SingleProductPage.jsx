@@ -12,7 +12,6 @@ const SingleProductPage = ({addToCart}) => {
 	const [quantity, setQuantity] = useState(1);
 
 	const { data: product, error, isLoading } = useData(`products/${id}`);
-	console.log(product);
     
 	return (
         <section className='align_center single_product'>

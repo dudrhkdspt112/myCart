@@ -4,6 +4,8 @@ import Navbar from './components/Navbar/Navbar'
 import Routing from './components/Routing/Routing'
 import { jwtDecode } from 'jwt-decode'
 import setAuthToken from './utils/setAuthToken'
+import { addToCartAPI } from './services/cartServices'
+import { toast, ToastContainer } from 'react-toastify'
 
 //만약에 토큰이 있으면 axios 설절에 추가됨
 setAuthToken(localStorage.getItem('token'));
@@ -23,6 +25,14 @@ function App() {
 			updatedCart[productIndex].quantity += quantity;
 		}
 		setCart(updatedCart);
+
+        addToCartAPI(product._id, quantity)
+			.then((res) => {
+				toast.success('상품 추가 성공~!');
+			})
+			.catch((err) => {
+				toast.error(' 상품 추가에 실패했다고?!');
+			});
 	};
     
     useEffect(() => {
@@ -42,6 +52,7 @@ function App() {
     <div className='app'>
 		<Navbar user={user} cartCount={cart.length}/>
         <main>
+            <ToastContainer position='bottom-right' />
             <Routing addToCart={addToCart}/>
         </main>
 	</div>
