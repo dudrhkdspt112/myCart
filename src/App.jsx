@@ -3,10 +3,12 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Routing from './components/Routing/Routing'
 import { jwtDecode } from 'jwt-decode'
+import { use } from 'react'
 
 function App() {
  
     const [user,setUser] = useState(null);
+    const [cart, setCart] = useState([]); //장바구니 담기위해 배열로
     
     useEffect(() => {
         try {
@@ -23,7 +25,7 @@ function App() {
 
   return (
     <div className='app'>
-		<Navbar user={user}/>
+		<Navbar user={user} cartCount={cart.length}/>
         <main>
             <Routing/>
         </main>
