@@ -10,8 +10,17 @@ function App() {
     const [user,setUser] = useState(null);
     const [cart, setCart] = useState([]); //장바구니 담기위해 배열로
     const addToCart = (product, quantity) => {
-        setCart([...cart, { product, quantity }]);
-    }
+		const updatedCart = [...cart];
+		const productIndex = updatedCart.findIndex(
+			(item) => item.product._id === product._id
+		);
+		if (productIndex === -1) {
+			updatedCart.push({ product, quantity});
+		} else {
+			updatedCart[productIndex].quantity += quantity;
+		}
+		setCart(updatedCart);
+	};
     
     useEffect(() => {
         try {
