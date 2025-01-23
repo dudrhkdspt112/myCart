@@ -4,6 +4,7 @@ import ProductCard from './ProductCard';
 import useData from '../../Hook/useData';
 import ProductCardSkeleton from './ProductCardSkeleton';
 import { useSearchParams } from 'react-router-dom';
+import Pagination from '../Common/Pagination';
 
 
 const ProductsList = () => {
@@ -45,7 +46,7 @@ const ProductsList = () => {
 				{isLoading && skeletons.map((n) => (
 					<ProductCardSkeleton key={n} />
 				))}
-				{data.products &&
+				{data.products && !isLoading &&
 					data.products.map((product) => (
 						<ProductCard
 							key={product._id}
@@ -57,9 +58,17 @@ const ProductsList = () => {
 							ratingCounts={product.reviews.counts}
 							stock={product.stock}
 						/>
-					))}
-				<button onClick={() => handlePageChange(2)}>2페이지</button>	
-			</div>	
+					))}					
+			</div>
+			{/* 페이지네이션 넣기 */}
+			{data && (
+				<Pagination
+				total={data.totalProducts}
+				perPage={8}
+				onClick={handlePageChange}
+				currentPage={page}
+				/>
+			)}	
 		</section>
 	)
 }
