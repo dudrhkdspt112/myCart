@@ -9,7 +9,7 @@ import lock from '../../assets/locked.png';
 import LinkWithIcon from './LinkWithIcon';
 import { NavLink } from 'react-router-dom';
 
-const Narbar = () => {
+const Narbar = ({user}) => {
     return (
         <nav className='align_center navbar'>
 			<div className='align_center'>
@@ -24,14 +24,24 @@ const Narbar = () => {
 			<div className='align_center navbar_links'>
 				<LinkWithIcon title='홈페이지' link='/' emoji={rocket}/>
 				<LinkWithIcon title='상품들' link='/products' emoji={star}/>
-				<LinkWithIcon title='로그인' link='/login' emoji={idButton}/>
-				<LinkWithIcon title='가입' link='/signup' emoji={memo}/>
-				<LinkWithIcon title='내주문' link='/myorders' emoji={order}/>
-				<LinkWithIcon title='로그아웃' link='/logout' emoji={lock}/>
+				{!user && (
+					<>
+						<LinkWithIcon title='로그인' link='/login' emoji={idButton}/>
+						<LinkWithIcon title='가입' link='/signup' emoji={memo}/>
+					</>
+				)}
+				
+				{user && (
+					<>
+						<LinkWithIcon title='내주문' link='/myorders' emoji={order}/>
+						<LinkWithIcon title='로그아웃' link='/logout' emoji={lock}/>
 
-				<NavLink to="/cart" className='align_center'>
-					장바구니 <p className='align_center cart_counts'><span>0</span></p>
-				</NavLink>
+						<NavLink to="/cart" className='align_center'>
+							장바구니 <p className='align_center cart_counts'><span>0</span></p>
+						</NavLink>
+					</>
+				)}
+				
             </div>
 		</nav>
     )
