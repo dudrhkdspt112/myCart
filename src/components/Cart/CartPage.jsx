@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './CartPage.css';
 import remove from '../../assets/remove.png';
 import user from '../../assets/user.webp';
 import Table from '../Common/Table.jsx';
 import QuantityInput from '../SingleProduct/QuantityInput';
+import UserContext from '../../contexts/UserContext.js';
 
 const CartPage = ({cart}) => {
     
 	const [subTotal, setSubTotal] = useState(0);
+	const user = useContext(UserContext); //useContext로 useContext가져오기
 
 	useEffect(() => {
 		let total = 0;
@@ -20,10 +22,10 @@ const CartPage = ({cart}) => {
 	return (
         <section className='align_center cart_page'>
 			<div className='align_center user_info'>
-				<img src={user} alt='user profile' />
+				<img src={`http://localhost:5000/profile/${user?.profilePic}`}alt='user profile' />
 				<div>
-					<p className='user_name'>Dooly</p>
-					<p className='user_email'>dooly@naver.com</p>
+					<p className='user_name'>{user?.name}</p>
+					<p className='user_email'>{user?.email}</p>
 				</div>
 			</div>
 
