@@ -10,7 +10,7 @@ import LoginPage from '../Authentication/LoginPage';
 import SignupPage from '../Authentication/SignupPage';
 import Logout from '../Authentication/Logout';
 
-const Routing = ({addToCart}, cart={cart}) => {
+const Routing = ({addToCart, cart}) => {
     return (
         <Routes>
 			<Route path='/' element={<HomePage />} />

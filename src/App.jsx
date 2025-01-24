@@ -38,7 +38,7 @@ function App() {
     const getCart = () => {
 		getCartAPI()
 			.then((res) => {
-				console.log(res.data);
+				setCart(res.data);
 			})
 			.catch((err) => {
 				toast.error('카트 가져오기에 실패했습니다.');
@@ -67,7 +67,7 @@ function App() {
 		<Navbar user={user} cartCount={cart.length}/>
         <main>
             <ToastContainer position='bottom-right'/>
-            <Routing addToCart={addToCart}/>
+            <Routing addToCart={addToCart} cart={cart}/>
         </main>
 	</div>
   )
