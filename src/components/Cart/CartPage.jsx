@@ -5,12 +5,14 @@ import user from '../../assets/user.webp';
 import Table from '../Common/Table.jsx';
 import QuantityInput from '../SingleProduct/QuantityInput';
 import UserContext from '../../contexts/UserContext.js';
+import CartContext from '../../contexts/CartContext.js';
 
-const CartPage = ({cart}) => {
+
+const CartPage = () => {
     
 	const [subTotal, setSubTotal] = useState(0);
 	const user = useContext(UserContext); //useContext로 useContext가져오기
-
+	const { cart, addToCart, removeFromCart } = useContext(CartContext);
 	useEffect(() => {
 		let total = 0;
 		cart.forEach((item) => {
@@ -40,7 +42,7 @@ const CartPage = ({cart}) => {
 							</td>
 							<td>{(quantity * product.price).toLocaleString('ko-KR')} 원</td>
 							<td>
-								<img src={remove} alt='remove icon' className='cart_remove_icon' />
+								<img onClick={() => removeFromCart(product._id)} src={remove} alt='remove icon' className='cart_remove_icon' />
 							</td>
 						</tr>
 					))}				
