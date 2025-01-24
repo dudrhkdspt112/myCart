@@ -5,7 +5,7 @@ import user from '../../assets/user.webp';
 import Table from '../Common/Table.jsx';
 import QuantityInput from '../SingleProduct/QuantityInput';
 
-const CartPage = () => {
+const CartPage = ({cart}) => {
     return (
         <section className='align_center cart_page'>
 			<div className='align_center user_info'>
