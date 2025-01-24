@@ -9,3 +9,8 @@ export function addToCartAPI(id, quantity) {
 export function getCartAPI() {
     return apiClient.get('/cart');
 }
+
+//장바구니에 제품 삭제하기
+export function removeFromCartAPI(id) {
+    return apiClient.patch(`/cart/remove/${id}`); //patch사용한 이유는 업데이트랑 같음(수정) 제품을 지우기 위해 사용
+  }
