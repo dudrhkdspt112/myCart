@@ -7,7 +7,7 @@ const ProductsPage = () => {
     return (
         <section className='products_page'>
             <ProductsSidebar/>
-            <ProductsList></ProductsList>
+            <ProductsList/>
         </section>
     )
 }

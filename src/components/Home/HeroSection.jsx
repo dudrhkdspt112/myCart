@@ -1,5 +1,6 @@
 import React from 'react'
 import './HeroSection.css';
+import { Link } from 'react-router-dom';
 
 
 const HeroSection = ({title, subtitle, link, image}) => {
@@ -10,9 +11,9 @@ const HeroSection = ({title, subtitle, link, image}) => {
 			<p className='hero_subtitle'>
 				{subtitle}
 			</p>
-			<a href={link} className='hero_link'>
+			<Link to={link} className='hero_link'>
 				바로구매
-			</a>
+			</Link>
 		</div>
 
 		<div className='align_center'>
